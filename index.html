@@ -13,7 +13,7 @@
       
       <article>
         <h1>represent</h1>
-        <h3>Static-generated presentation and article pages</h3>
+        <h3>Create static HTML presentations and articles</h3>
         <h3>21 May 2013</h3>
         
           <div class="presenter">
@@ -42,31 +42,22 @@
         
   
   <p>
-    The Go language developers created <a href="present" target="_blank">http://talks.golang.org/2012/go-docs.slide#21</a>, a really nice slide presentation
+    The Go language developers created <a href="Present" target="_blank">http://talks.golang.org/2012/go-docs.slide#21</a>, a tool for creating clean and simple HTML5 slide decks. Presentations are authored in a text-based format similar to wiki markup.
+  </p>
+  
+
+  
+  <p>
+    I liked the simple clean look of Present, but it is designed to serve presentations from
 <br>
 
-    tool with a clean look. Presentations are defined in a simple text-based format similar to wiki markup.
+    an embedded HTTP server.
   </p>
   
 
   
   <p>
-    Much better than Powerpoint, or Google Drive for that matter. You can check it into revision control.
-  </p>
-  
-
-  
-  <p>
-    present serves up pages in an HTTP server. It&#39;s great for live demonstrations
-<br>
-
-    of code.
-  </p>
-  
-
-  
-  <p>
-    I liked the simple clean look of Present, so I adapted it for static HTML page generation.
+    Represent is my adaptation for static HTML page generation.
   </p>
   
 
@@ -81,7 +72,7 @@
         
   
   <p>
-    1. Install the Go language tools.
+    1. [[Install the Go language tools][http://golang.org/doc/install]].
   </p>
   
 
@@ -93,13 +84,13 @@
 
   
   <p>
-    3. Download and install:
+    3. Download and install.
   </p>
   
 
   
-  <div class="code"><pre>$ go get github.com/cmars/represent/cmd/represent
-$ go install github.com/cmars/represent/cmd/represent</pre></div>
+  <div class="code"><pre>$ go get github.com/cmars/represent
+$ go install github.com/cmars/represent</pre></div>
   
 
       
@@ -122,19 +113,19 @@ $ go install github.com/cmars/represent/cmd/represent</pre></div>
 
   
   <p>
-    Use represent to compile all the Present files in the current
+    Use the <code>represent</code> to compile all the Present files in the current
 <br>
 
-    working directory to a hierarchy of static html pages,
+    working directory into a hierarchy of static html pages,
 <br>
 
-    in a &#39;publish&#39; subdirectory.
+    in a <code>publish/</code> subdirectory.
   </p>
   
 
   
   <p>
-    Use represent -basedir &lt;dir&gt; to target a directory tree of Present files
+    Use `represent -basedir &lt;dir&gt;` to target a directory tree of Present files
 <br>
 
     elsewhere.
@@ -143,7 +134,46 @@ $ go install github.com/cmars/represent/cmd/represent</pre></div>
 
   
   <p>
-    represent&#39;s documentation was compiled with represent. Mmm dogfood!
+    This presentation was compiled with represent. Mmm dogfood!
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>TODO</h3>
+        
+  
+  <p>
+    Some feature ideas:
+  </p>
+  
+
+  
+  <p>
+    Themes. Can definitely be overdone, but after a while too many presentations start looking the same.
+  </p>
+  
+
+  
+  <p>
+    Extensions to the Present markup. Sub-headings in slides, for example. Or tables.
+  </p>
+  
+
+  
+  <p>
+    Weblog Features, like a timeline of posts, index, etc.
+  </p>
+  
+
+  
+  <p>
+    Pull requests welcome.
   </p>
   
 
