@@ -5,7 +5,7 @@ Create static HTML presentations and articles
 Casey Marshall
 Software Flâneur
 casey.marshall@gmail.com
-http://cmars.github.io/represent
+http://github.com/cmars/represent
 
 * Introducing represent
 
@@ -32,9 +32,7 @@ Write some .slide and .article files in the [[http://godoc.org/code.google.com/p
 
   $ represent
 
-compiles all the Present files in the current
-working directory into a hierarchy of static html pages.
-Compiled HTML and linked assets will be written into a `publish` subdirectory.
+compiles all the Present files in the current working directory into a hierarchy of static html pages. Compiled HTML and linked assets will be written into a `publish` subdirectory.
 
   $ represent -basedir <dir>
 
