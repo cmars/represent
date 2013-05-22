@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>represent</title>
+    <meta charset='utf-8'>
+    <script src='static/slides.js'></script>
+  </head>
+
+  <body style='display: none'>
+
+    <section class='slides layout-widescreen'>
+      
+      <article>
+        <h1>represent</h1>
+        <h3>Static-generated presentation and article pages</h3>
+        <h3>21 May 2013</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Casey Marshall
+  </p>
+  
+
+  
+  <p>
+    Software Flâneur
+  </p>
+  
+
+          </div>
+        
+      </article>
+      
+  
+  
+      <article>
+      
+        <h3>Introducing represent</h3>
+        
+  
+  <p>
+    The Go language developers created <a href="present" target="_blank">http://talks.golang.org/2012/go-docs.slide#21</a>, a really nice slide presentation
+<br>
+
+    tool with a clean look. Presentations are defined in a simple text-based format similar to wiki markup.
+  </p>
+  
+
+  
+  <p>
+    Much better than Powerpoint, or Google Drive for that matter. You can check it into revision control.
+  </p>
+  
+
+  
+  <p>
+    present serves up pages in an HTTP server. It&#39;s great for live demonstrations
+<br>
+
+    of code.
+  </p>
+  
+
+  
+  <p>
+    I liked the simple clean look of Present, so I adapted it for static HTML page generation.
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Installation</h3>
+        
+  
+  <p>
+    1. Install the Go language tools.
+  </p>
+  
+
+  
+  <p>
+    2. Set up your $GOPATH. Add $GOPATH/bin to your $PATH.
+  </p>
+  
+
+  
+  <p>
+    3. Download and install:
+  </p>
+  
+
+  
+  <div class="code"><pre>$ go get github.com/cmars/represent/cmd/represent
+$ go install github.com/cmars/represent/cmd/represent</pre></div>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Usage</h3>
+        
+  
+  <p>
+    Create .slide and .article files in the Present format
+<br>
+
+    described here: <a href="http://godoc.org/code.google.com/p/go.talks/pkg/present" target="_blank">http://godoc.org/code.google.com/p/go.talks/pkg/present</a>.
+  </p>
+  
+
+  
+  <p>
+    Use represent to compile all the Present files in the current
+<br>
+
+    working directory to a hierarchy of static html pages,
+<br>
+
+    in a &#39;publish&#39; subdirectory.
+  </p>
+  
+
+  
+  <p>
+    Use represent -basedir &lt;dir&gt; to target a directory tree of Present files
+<br>
+
+    elsewhere.
+  </p>
+  
+
+  
+  <p>
+    represent&#39;s documentation was compiled with represent. Mmm dogfood!
+  </p>
+  
+
+      
+      </article>
+  
+  
+
+      <article>
+        <h3>Thank you</h1>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Casey Marshall
+  </p>
+  
+
+  
+  <p>
+    Software Flâneur
+  </p>
+  
+<p class="link"><a href="mailto:casey.marshall@gmail.com" target="_blank">casey.marshall@gmail.com</a></p><p class="link"><a href="http://represent.github.com" target="_blank">http://represent.github.com</a></p>
+          </div>
+        
+      </article>
+
+  </body>
+  
+</html>
