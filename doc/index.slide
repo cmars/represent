@@ -1,5 +1,5 @@
 represent
-Static-generated presentation and article pages
+Create static HTML presentations and articles
 21 May 2013
 
 Casey Marshall
@@ -9,37 +9,46 @@ http://represent.github.com
 
 * Introducing represent
 
-The Go language developers created [[present][http://talks.golang.org/2012/go-docs.slide#21]], a really nice slide presentation
-tool with a clean look. Presentations are defined in a simple text-based format similar to wiki markup.
+The Go language developers created [[Present][http://talks.golang.org/2012/go-docs.slide#21]], a tool for creating clean and simple HTML5 slide decks. Presentations are authored in a text-based format similar to wiki markup.
 
-Much better than Powerpoint, or Google Drive for that matter. You can check it into revision control.
+I liked the simple clean look of Present, but it is designed to serve presentations from
+an embedded HTTP server.
 
-present serves up pages in an HTTP server. It's great for live demonstrations
-of code.
-
-I liked the simple clean look of Present, so I adapted it for static HTML page generation.
+Represent is my adaptation for static HTML page generation.
 
 * Installation
 
-1. Install the Go language tools.
+1. [[Install the Go language tools][http://golang.org/doc/install]].
 
 2. Set up your $GOPATH. Add $GOPATH/bin to your $PATH.
 
-3. Download and install:
+3. Download and install.
 
-  $ go get github.com/cmars/represent/cmd/represent
-  $ go install github.com/cmars/represent/cmd/represent
+  $ go get github.com/cmars/represent
+  $ go install github.com/cmars/represent
 
 * Usage
 
 Create .slide and .article files in the Present format
 described here: [[http://godoc.org/code.google.com/p/go.talks/pkg/present]].
 
-Use represent to compile all the Present files in the current
-working directory to a hierarchy of static html pages,
-in a 'publish' subdirectory.
+Use the `represent` to compile all the Present files in the current
+working directory into a hierarchy of static html pages,
+in a `publish/` subdirectory.
 
-Use represent -basedir <dir> to target a directory tree of Present files
+Use `represent -basedir <dir>` to target a directory tree of Present files
 elsewhere.
 
-represent's documentation was compiled with represent. Mmm dogfood!
+This presentation was compiled with represent. Mmm dogfood!
+
+* TODO
+
+Some feature ideas:
+
+Themes. Can definitely be overdone, but after a while too many presentations start looking the same.
+
+Extensions to the Present markup. Sub-headings in slides, for example. Or tables.
+
+Weblog Features, like a timeline of posts, index, etc.
+
+Pull requests welcome.
