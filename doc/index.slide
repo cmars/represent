@@ -9,16 +9,15 @@ http://represent.github.com
 
 * Introducing represent
 
-The Go language developers created [[Present][http://talks.golang.org/2012/go-docs.slide#21]], a tool for creating clean and simple HTML5 slide decks. Presentations are authored in a text-based format similar to wiki markup.
+The Go language developers created [[http://talks.golang.org/2012/go-docs.slide#21][Present]], a tool for authoring clean and simple HTML5 slide decks. Presentations are authored in a text-based format similar to wiki markup.
 
-I liked the simple clean look of Present, but it is designed to serve presentations from
-an embedded HTTP server.
+However, present is designed to serve presentations from an embedded HTTP server.
 
-Represent is my adaptation for static HTML page generation.
+Represent is my adaptation for rendering static HTML pages.
 
 * Installation
 
-1. [[Install the Go language tools][http://golang.org/doc/install]].
+1. [[http://golang.org/doc/install][Install the Go language tools]].
 
 2. Set up your $GOPATH. Add $GOPATH/bin to your $PATH.
 
@@ -29,10 +28,9 @@ Represent is my adaptation for static HTML page generation.
 
 * Usage
 
-Create .slide and .article files in the Present format
-described here: [[http://godoc.org/code.google.com/p/go.talks/pkg/present]].
+Create .slide and .article files in the [[http://godoc.org/code.google.com/p/go.talks/pkg/present][Present format]].
 
-Use the `represent` to compile all the Present files in the current
+Use `represent` to compile all the Present files in the current
 working directory into a hierarchy of static html pages,
 in a `publish/` subdirectory.
 
