@@ -38,10 +38,6 @@ func (r *Represent) RequirePublishDir() (err error) {
 	if err != nil {
 		return
 	}
-	err = os.RemoveAll(r.publishDir)
-	if err != nil {
-		return
-	}
 	return os.MkdirAll(r.publishDir, 0755)
 }
 
