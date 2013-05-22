@@ -42,22 +42,19 @@
         
   
   <p>
-    The Go language developers created <a href="Present" target="_blank">http://talks.golang.org/2012/go-docs.slide#21</a>, a tool for creating clean and simple HTML5 slide decks. Presentations are authored in a text-based format similar to wiki markup.
+    The Go language developers created <a href="http://talks.golang.org/2012/go-docs.slide#21" target="_blank">Present</a>, a tool for authoring clean and simple HTML5 slide decks. Presentations are authored in a text-based format similar to wiki markup.
   </p>
   
 
   
   <p>
-    I liked the simple clean look of Present, but it is designed to serve presentations from
-<br>
-
-    an embedded HTTP server.
+    However, present is designed to serve presentations from an embedded HTTP server.
   </p>
   
 
   
   <p>
-    Represent is my adaptation for static HTML page generation.
+    Represent is my adaptation for rendering static HTML pages.
   </p>
   
 
@@ -72,7 +69,7 @@
         
   
   <p>
-    1. [[Install the Go language tools][http://golang.org/doc/install]].
+    1. <a href="http://golang.org/doc/install" target="_blank">Install the Go language tools</a>.
   </p>
   
 
@@ -104,16 +101,13 @@ $ go install github.com/cmars/represent</pre></div>
         
   
   <p>
-    Create .slide and .article files in the Present format
-<br>
-
-    described here: <a href="http://godoc.org/code.google.com/p/go.talks/pkg/present" target="_blank">http://godoc.org/code.google.com/p/go.talks/pkg/present</a>.
+    Create .slide and .article files in the <a href="http://godoc.org/code.google.com/p/go.talks/pkg/present" target="_blank">Present format</a>.
   </p>
   
 
   
   <p>
-    Use the <code>represent</code> to compile all the Present files in the current
+    Use <code>represent</code> to compile all the Present files in the current
 <br>
 
     working directory into a hierarchy of static html pages,
