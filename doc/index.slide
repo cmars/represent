@@ -5,13 +5,13 @@ Create static HTML presentations and articles
 Casey Marshall
 Software Flâneur
 casey.marshall@gmail.com
-http://represent.github.com
+http://cmars.github.io/represent
 
 * Introducing represent
 
 The Go language developers created [[http://talks.golang.org/2012/go-docs.slide#21][Present]], a tool for authoring clean and simple HTML5 slide decks. Presentations are authored in a text-based format similar to wiki markup.
 
-However, present is designed to serve presentations from an embedded HTTP server.
+Present is designed to serve presentations from an embedded HTTP server with live sandboxed code demonstrations.
 
 Represent is my adaptation for rendering static HTML pages.
 
@@ -28,25 +28,34 @@ Represent is my adaptation for rendering static HTML pages.
 
 * Usage
 
-Create .slide and .article files in the [[http://godoc.org/code.google.com/p/go.talks/pkg/present][Present format]].
+Write some .slide and .article files in the [[http://godoc.org/code.google.com/p/go.talks/pkg/present][Present format]].
 
-Use `represent` to compile all the Present files in the current
-working directory into a hierarchy of static html pages,
-in a `publish/` subdirectory.
+  $ represent
 
-Use `represent -basedir <dir>` to target a directory tree of Present files
-elsewhere.
+compiles all the Present files in the current
+working directory into a hierarchy of static html pages.
+Compiled HTML and linked assets will be written into a `publish` subdirectory.
+
+  $ represent -basedir <dir>
+
+compiles a directory tree of Present files located elsewhere.
 
 This presentation was compiled with represent. Mmm dogfood!
 
 * TODO
 
+Probably broken:
+
+- Image and other relative links. They will need to be copied into the `publish` subdirectory.
+
+- Should add a switch to specify the publish location.
+
 Some feature ideas:
 
-Themes. Can definitely be overdone, but after a while too many presentations start looking the same.
+- Themes. Can definitely be overdone. Don't want all decks looking the same though.
 
-Extensions to the Present markup. Sub-headings in slides, for example. Or tables.
+- Extensions to the Present markup. Sub-headings in slides, tables.
 
-Weblog Features, like a timeline of posts, index, etc.
+- Weblog Features. Timeline of posts, index, tags, etc.
 
 Pull requests welcome.
