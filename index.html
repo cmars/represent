@@ -48,7 +48,7 @@
 
   
   <p>
-    However, present is designed to serve presentations from an embedded HTTP server.
+    Present is designed to serve presentations from an embedded HTTP server with live sandboxed code demonstrations.
   </p>
   
 
@@ -101,28 +101,33 @@ $ go install github.com/cmars/represent</pre></div>
         
   
   <p>
-    Create .slide and .article files in the <a href="http://godoc.org/code.google.com/p/go.talks/pkg/present" target="_blank">Present format</a>.
+    Write some .slide and .article files in the <a href="http://godoc.org/code.google.com/p/go.talks/pkg/present" target="_blank">Present format</a>.
   </p>
   
 
   
+  <div class="code"><pre>$ represent</pre></div>
+  
+
+  
   <p>
-    Use <code>represent</code> to compile all the Present files in the current
+    compiles all the Present files in the current
 <br>
 
-    working directory into a hierarchy of static html pages,
+    working directory into a hierarchy of static html pages.
 <br>
 
-    in a <code>publish/</code> subdirectory.
+    Compiled HTML and linked assets will be written into a <code>publish</code> subdirectory.
   </p>
   
 
   
-  <p>
-    Use `represent -basedir &lt;dir&gt;` to target a directory tree of Present files
-<br>
+  <div class="code"><pre>$ represent -basedir &lt;dir&gt;</pre></div>
+  
 
-    elsewhere.
+  
+  <p>
+    compiles a directory tree of Present files located elsewhere.
   </p>
   
 
@@ -143,27 +148,45 @@ $ go install github.com/cmars/represent</pre></div>
         
   
   <p>
+    Probably broken:
+  </p>
+  
+
+  <ul>
+  
+    <li>Image and other relative links. They will need to be copied into the <code>publish</code> subdirectory.</li>
+  
+  </ul>
+
+  <ul>
+  
+    <li>Should add a switch to specify the publish location.</li>
+  
+  </ul>
+
+  
+  <p>
     Some feature ideas:
   </p>
   
 
+  <ul>
   
-  <p>
-    Themes. Can definitely be overdone, but after a while too many presentations start looking the same.
-  </p>
+    <li>Themes. Can definitely be overdone. Don&#39;t want all decks looking the same though.</li>
   
+  </ul>
 
+  <ul>
   
-  <p>
-    Extensions to the Present markup. Sub-headings in slides, for example. Or tables.
-  </p>
+    <li>Extensions to the Present markup. Sub-headings in slides, tables.</li>
   
+  </ul>
 
+  <ul>
   
-  <p>
-    Weblog Features, like a timeline of posts, index, etc.
-  </p>
+    <li>Weblog Features. Timeline of posts, index, tags, etc.</li>
   
+  </ul>
 
   
   <p>
@@ -192,7 +215,7 @@ $ go install github.com/cmars/represent</pre></div>
     Software Flâneur
   </p>
   
-<p class="link"><a href="mailto:casey.marshall@gmail.com" target="_blank">casey.marshall@gmail.com</a></p><p class="link"><a href="http://represent.github.com" target="_blank">http://represent.github.com</a></p>
+<p class="link"><a href="mailto:casey.marshall@gmail.com" target="_blank">casey.marshall@gmail.com</a></p><p class="link"><a href="http://cmars.github.io/represent" target="_blank">http://cmars.github.io/represent</a></p>
           </div>
         
       </article>
