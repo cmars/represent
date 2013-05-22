@@ -1,0 +1,6 @@
+[submodule "represent"]
+	path = doc/publish
+	url = git@github.com:cmars/represent.git
+[submodule "doc/publish"]
+	path = doc/publish
+	url = git@github.com:cmars/represent.git
