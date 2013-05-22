@@ -1,0 +1,45 @@
+represent
+Static-generated presentation and article pages
+21 May 2013
+
+Casey Marshall
+Software Flâneur
+casey.marshall@gmail.com
+http://represent.github.com
+
+* Introducing represent
+
+The Go language developers created [[present][http://talks.golang.org/2012/go-docs.slide#21]], a really nice slide presentation
+tool with a clean look. Presentations are defined in a simple text-based format similar to wiki markup.
+
+Much better than Powerpoint, or Google Drive for that matter. You can check it into revision control.
+
+present serves up pages in an HTTP server. It's great for live demonstrations
+of code.
+
+I liked the simple clean look of Present, so I adapted it for static HTML page generation.
+
+* Installation
+
+1. Install the Go language tools.
+
+2. Set up your $GOPATH. Add $GOPATH/bin to your $PATH.
+
+3. Download and install:
+
+  $ go get github.com/cmars/represent/cmd/represent
+  $ go install github.com/cmars/represent/cmd/represent
+
+* Usage
+
+Create .slide and .article files in the Present format
+described here: [[http://godoc.org/code.google.com/p/go.talks/pkg/present]].
+
+Use represent to compile all the Present files in the current
+working directory to a hierarchy of static html pages,
+in a 'publish' subdirectory.
+
+Use represent -basedir <dir> to target a directory tree of Present files
+elsewhere.
+
+represent's documentation was compiled with represent. Mmm dogfood!
