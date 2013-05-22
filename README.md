@@ -1,6 +1,6 @@
 represent
 =========
 
-represent compiles presentations and articles authored for the Go language [http://talks.golang.org/2012/go-docs.slide#21](Present) tool to static HTML.
+represent compiles presentations and articles authored for the Go language [Present](http://talks.golang.org/2012/go-docs.slide#21) tool, to static HTML pages.
 
-This README really doesn't do it justice. You should read the [https://cmars.github.io/represent](presentation).
+This README really doesn't do it justice. You should read the [presentation](https://cmars.github.io/represent).
