@@ -7,34 +7,24 @@ package main
 import (
 	"flag"
 	. "github.com/cmars/represent/pkg/represent"
-	"os"
+	"log"
 )
 
-var baseDir *string = flag.String("basedir", "", "Base directory of static site")
+var src *string = flag.String("src", "", "Source path containing Present files and referenced content")
+var publish *string = flag.String("publish", "", "Publish path to create static HTML pages and assets")
+
+func die(err error, v ...interface{}) {
+	log.Println(append(v, err)...)
+}
 
 func main() {
 	flag.Parse()
-	if *baseDir == "" {
-		wd, err := os.Getwd()
-		if err != nil {
-			panic(err)
-		}
-		baseDir = &wd
-	}
-	represent, err := NewRepresent(*baseDir)
+	represent, err := NewRepresent(*src, *publish)
 	if err != nil {
-		panic(err)
+		die(err)
 	}
-	// Create publish directory
-	represent.RequirePublishDir()
-	// Copy present static files to publish directory
-	err = represent.UpdateAssets()
+	err = represent.Publish()
 	if err != nil {
-		panic(err)
-	}
-	// For each present file, render to html in publish directory
-	err = represent.CompileAll()
-	if err != nil {
-		panic(err)
+		die(err)
 	}
 }

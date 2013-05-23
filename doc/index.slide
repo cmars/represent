@@ -34,21 +34,15 @@ Write some .slide and .article files in the [[http://godoc.org/code.google.com/p
 
 compiles all the Present files in the current working directory into a hierarchy of static html pages. Compiled HTML and linked assets will be written into a `publish` subdirectory.
 
-  $ represent -basedir <dir>
+  $ represent -src <source> -publish <publish>
 
-compiles a directory tree of Present files located elsewhere.
+compiles a directory tree of Present files located in _source_ to the _publish_ directory.
 
 This presentation was compiled with represent. Mmm dogfood!
 
 * TODO
 
-Probably broken:
-
-- Image and other relative links. They will need to be copied into the `publish` subdirectory.
-
-- Should add a switch to specify the publish location.
-
-Some feature ideas:
+Feature ideas:
 
 - Themes. Can definitely be overdone. Don't want all decks looking the same though.
 

@@ -19,11 +19,13 @@ var extensions = map[string]string{
 	".article": "article.tmpl",
 }
 
+// isDoc tests if the path is to a file with a Present format file extension.
 func isDoc(path string) bool {
 	_, ok := extensions[filepath.Ext(path)]
 	return ok
 }
 
+// parse reads the given file path and parses into a Present document structure.
 func parse(name string, mode present.ParseMode) (*present.Doc, error) {
 	f, err := os.Open(name)
 	if err != nil {

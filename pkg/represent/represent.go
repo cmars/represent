@@ -16,32 +16,67 @@ import (
 const REPRESENT_PKG = "github.com/cmars/represent"
 const PRESENT_PKG = "code.google.com/p/go.talks/present"
 
+// Represent provides functions to publish a directory tree of files
+// in the Present format.
 type Represent struct {
-	BaseDir       string
+	srcDir        string
 	publishDir    string
 	presentPkgDir string
 }
 
-func NewRepresent(baseDir string) (*Represent, error) {
+// NewRepresent builds a new, initialized Represent struct
+// for processing the given base directory. If srcDir is
+// the empty string, base directory is assumed to be the
+// current working directory.
+func NewRepresent(srcDir, publishDir string) (*Represent, error) {
+	// Discern where the represent package source is, so we can
+	// locate the static files.
 	p, err := build.Default.Import(REPRESENT_PKG, "", build.FindOnly)
 	if err != nil {
 		return nil, err
 	}
-	r := &Represent{BaseDir: baseDir,
-		publishDir:    filepath.Join(baseDir, "publish"),
+	// Resolve default source directory
+	if srcDir == "" {
+		srcDir, err = os.Getwd()
+		if err != nil {
+			return nil, err
+		}
+	}
+	// Resolve default publish directory
+	if publishDir == "" {
+		publishDir = filepath.Join(srcDir, "publish")
+	}
+	r := &Represent{srcDir: srcDir,
+		publishDir:    publishDir,
 		presentPkgDir: p.Dir}
-	return r, nil
+	err = r.requirePublishDir()
+	return r, err
 }
 
-func (r *Represent) RequirePublishDir() (err error) {
-	err = os.MkdirAll(r.BaseDir, 0755)
+// requirePublishDir creates the publish directory
+// if it does not exist.
+func (r *Represent) requirePublishDir() (err error) {
+	err = os.MkdirAll(r.srcDir, 0755)
 	if err != nil {
 		return
 	}
 	return os.MkdirAll(r.publishDir, 0755)
 }
 
-func (r *Represent) UpdateAssets() error {
+// Publish sets up all referenced static assets, and compiles
+// all Present format files in the source directory tree to
+// the publish directory.
+func (r *Represent) Publish() (err error) {
+	err = r.updateAssets()
+	if err != nil {
+		return
+	}
+	return r.compileAll()
+}
+
+// updateAssets copies static files (Javascript, CSS, etc)
+// that are referenced by the Present templates.
+func (r *Represent) updateAssets() error {
 	staticDir := filepath.Join(r.presentPkgDir, "static")
 	return filepath.Walk(staticDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
@@ -74,8 +109,10 @@ func (r *Represent) UpdateAssets() error {
 	})
 }
 
-func (r *Represent) CompileAll() error {
-	return filepath.Walk(r.BaseDir, func(path string, info os.FileInfo, err error) error {
+// compileAll publishes all the .slide and .article files found
+// in the base directory into the publish directory.
+func (r *Represent) compileAll() error {
+	return filepath.Walk(r.srcDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
@@ -83,18 +120,45 @@ func (r *Represent) CompileAll() error {
 			// Skip the publish dir
 			return filepath.SkipDir
 		}
-		if !isDoc(path) {
+		if strings.HasPrefix(filepath.Base(path), ".") {
+			if info.IsDir() {
+				return filepath.SkipDir
+			} else {
+				return nil
+			}
+		}
+		if info.IsDir() {
 			return nil
 		}
 		// Derive relative path to static file
-		relPath := strings.Replace(path, r.BaseDir, "", 1)
+		relPath := strings.Replace(path, r.srcDir, "", 1)
 		targetPath := filepath.Join(append([]string{r.publishDir}, filepath.SplitList(relPath)...)...)
-		targetPath = regexp.MustCompile(`\.[^.]+$`).ReplaceAllString(targetPath, ".html")
+		err = os.MkdirAll(filepath.Dir(targetPath), 0755)
+		if err != nil {
+			return err
+		}
+		if isDoc(path) {
+			// Render Present file to static HTML
+			targetPath = regexp.MustCompile(`\.[^.]+$`).ReplaceAllString(targetPath, ".html")
+			destFile, err := os.Create(targetPath)
+			if err != nil {
+				return err
+			}
+			defer destFile.Close()
+			return renderDoc(destFile, r.presentPkgDir, path)
+		}
+		// Copy file into publish directory unchanged
+		srcFile, err := os.Open(path)
+		if err != nil {
+			return err
+		}
+		defer srcFile.Close()
 		destFile, err := os.Create(targetPath)
 		if err != nil {
 			return err
 		}
 		defer destFile.Close()
-		return renderDoc(destFile, r.presentPkgDir, path)
+		_, err = io.Copy(destFile, srcFile)
+		return err
 	})
 }
