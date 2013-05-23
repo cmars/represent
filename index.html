@@ -116,12 +116,12 @@ $ go install github.com/cmars/represent</pre></div>
   
 
   
-  <div class="code"><pre>$ represent -basedir &lt;dir&gt;</pre></div>
+  <div class="code"><pre>$ represent -src &lt;source&gt; -publish &lt;publish&gt;</pre></div>
   
 
   
   <p>
-    compiles a directory tree of Present files located elsewhere.
+    compiles a directory tree of Present files located in <i>source</i> to the <i>publish</i> directory.
   </p>
   
 
@@ -142,25 +142,7 @@ $ go install github.com/cmars/represent</pre></div>
         
   
   <p>
-    Probably broken:
-  </p>
-  
-
-  <ul>
-  
-    <li>Image and other relative links. They will need to be copied into the <code>publish</code> subdirectory.</li>
-  
-  </ul>
-
-  <ul>
-  
-    <li>Should add a switch to specify the publish location.</li>
-  
-  </ul>
-
-  
-  <p>
-    Some feature ideas:
+    Feature ideas:
   </p>
   
 
