@@ -5,7 +5,7 @@
 package represent
 
 import (
-	"code.google.com/p/go.talks/pkg/present"
+	"code.google.com/p/go.tools/present"
 	"fmt"
 	"io"
 	"os"
