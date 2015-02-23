@@ -425,3 +425,8 @@ div.output .buttons {
 	font-size: 28px;
 	line-height: 1.2em;
 }
+.caption {
+    color: #666;
+    text-align: center;
+    font-size: 0.75em;
+}

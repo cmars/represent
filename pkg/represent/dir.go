@@ -5,11 +5,12 @@
 package represent
 
 import (
-	"code.google.com/p/go.tools/present"
 	"fmt"
 	"io"
 	"os"
 	"path/filepath"
+
+	"golang.org/x/tools/present"
 )
 
 // extensions maps the presentable file extensions to the name of the
