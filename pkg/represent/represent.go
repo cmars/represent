@@ -14,7 +14,7 @@ import (
 )
 
 const REPRESENT_PKG = "github.com/cmars/represent"
-const PRESENT_PKG = "code.google.com/p/go.tools/present"
+const PRESENT_PKG = "golang.org/x/tools/present"
 
 // Represent provides functions to publish a directory tree of files
 // in the Present format.
