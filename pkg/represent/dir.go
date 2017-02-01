@@ -26,6 +26,11 @@ func isDoc(path string) bool {
 	return ok
 }
 
+// since we're writing static html nothing will be playable.
+func playable(c present.Code) bool {
+	return false
+}
+
 // parse reads the given file path and parses into a Present document structure.
 func parse(name string, mode present.ParseMode) (*present.Doc, error) {
 	f, err := os.Open(name)
@@ -59,6 +64,12 @@ func renderDoc(w io.Writer, base, docFile string) error {
 
 	// Read and parse the input.
 	tmpl := present.Template()
+
+	funcmap := make(map[string]interface{}, 1)
+	funcmap["playable"] = playable
+
+	tmpl = tmpl.Funcs(funcmap)
+
 	if _, err := tmpl.ParseFiles(actionTmpl, contentTmpl); err != nil {
 		return err
 	}
