@@ -430,3 +430,12 @@ div.output .buttons {
     text-align: center;
     font-size: 0.75em;
 }
+
+div.pagenumber {
+  color: #666;
+  position: absolute;
+  bottom:0;
+  right:0;
+  padding-right:10px;
+  font-size: 80%;
+}
