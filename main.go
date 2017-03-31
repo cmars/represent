@@ -6,12 +6,14 @@ package main
 
 import (
 	"flag"
-	. "github.com/cmars/represent/pkg/represent"
 	"log"
+
+	. "github.com/cmars/represent/pkg/represent"
 )
 
 var src *string = flag.String("src", "", "Source path containing Present files and referenced content")
 var publish *string = flag.String("publish", "", "Publish path to create static HTML pages and assets")
+var base *string = flag.String("base", "", "Base path for slide template and static resources")
 
 func die(err error, v ...interface{}) {
 	log.Println(append(v, err)...)
@@ -19,7 +21,7 @@ func die(err error, v ...interface{}) {
 
 func main() {
 	flag.Parse()
-	represent, err := NewRepresent(*src, *publish)
+	represent, err := NewRepresent(*src, *publish, *base)
 	if err != nil {
 		die(err)
 	}

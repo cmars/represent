@@ -14,7 +14,6 @@ import (
 )
 
 const REPRESENT_PKG = "github.com/cmars/represent"
-const PRESENT_PKG = "golang.org/x/tools/present"
 
 // Represent provides functions to publish a directory tree of files
 // in the Present format.
@@ -28,13 +27,17 @@ type Represent struct {
 // for processing the given base directory. If srcDir is
 // the empty string, base directory is assumed to be the
 // current working directory.
-func NewRepresent(srcDir, publishDir string) (*Represent, error) {
+func NewRepresent(srcDir, publishDir, baseDir string) (*Represent, error) {
 	// Discern where the represent package source is, so we can
 	// locate the static files.
-	p, err := build.Default.Import(REPRESENT_PKG, "", build.FindOnly)
-	if err != nil {
-		return nil, err
+	if baseDir == "" {
+		p, err := build.Default.Import(REPRESENT_PKG, "", build.FindOnly)
+		if err != nil {
+			return nil, err
+		}
+		baseDir = p.Dir
 	}
+	var err error
 	// Resolve default source directory
 	if srcDir == "" {
 		srcDir, err = os.Getwd()
@@ -48,7 +51,7 @@ func NewRepresent(srcDir, publishDir string) (*Represent, error) {
 	}
 	r := &Represent{srcDir: srcDir,
 		publishDir:    publishDir,
-		presentPkgDir: p.Dir}
+		presentPkgDir: baseDir}
 	err = r.requirePublishDir()
 	return r, err
 }
